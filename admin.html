@@ -8,7 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="assets/css/admin.css" />
+
   </head>
   <body>
     <div class="shell">
@@ -38,24 +38,6 @@
               />
             </svg>
             Pengaturan
-          </button>
-          <button
-            class="nav-item"
-            data-panel="order"
-            onclick="switchPanel(this)"
-          >
-            <svg
-              class="nav-icon"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-            Urutan Portfolio
           </button>
           <button
             class="nav-item"
@@ -107,8 +89,9 @@
               target="_blank"
               class="btn btn-sm"
               style="flex: 1; justify-content: center; text-decoration: none"
-              >↗ Lihat Site</a
             >
+              ↗ Lihat Site
+            </a>
           </div>
         </div>
       </aside>
@@ -125,10 +108,10 @@
           <div id="topbar-actions"></div>
         </div>
         <div class="content">
-          <!-- ── CONFIG PANEL ── -->
+          <!-- CONFIG PANEL -->
           <div class="panel active" id="panel-config">
             <div class="config-section">
-              <h3 class="admin-section-title">Profil</h3>
+              <h3>Profil</h3>
               <div class="config-grid">
                 <div class="field">
                   <label>Nama</label
@@ -141,48 +124,31 @@
                     value="Videography · Motion · Design"
                   />
                 </div>
-              </div>
-
-              <!-- Bilingual bio -->
-              <div class="field" style="margin-top: 0.5rem">
-                <label>Bio</label>
-                <div class="bio-tabs">
-                  <button
-                    class="bio-tab active"
-                    onclick="showBioTab('id', this)"
+                <div class="field" style="grid-column: span 2">
+                  <label>Bio</label
+                  ><textarea id="cfg-bio">
+Seorang kreator visual yang menghadirkan cerita melalui video, gerak, dan desain. Dari Surakarta, berkarya untuk brand-brand terkemuka.</textarea
                   >
-                    🇮🇩 Bahasa Indonesia
-                  </button>
-                  <button class="bio-tab" onclick="showBioTab('en', this)">
-                    🇬🇧 English
-                  </button>
                 </div>
-                <textarea
-                  id="cfg-bio-id"
-                  rows="4"
-                  style="display: block"
-                  placeholder="Bio dalam Bahasa Indonesia…"
-                ></textarea>
-                <textarea
-                  id="cfg-bio-en"
-                  rows="4"
-                  style="display: none"
-                  placeholder="Bio in English…"
-                ></textarea>
               </div>
             </div>
-
-            <div class="config-section" style="margin-top: 1.5rem">
-              <h3 class="admin-section-title">Kontak</h3>
+            <div class="config-section">
+              <h3>Kontak</h3>
               <div class="config-grid">
                 <div class="field">
-                  <label>LinkedIn URL</label><input id="cfg-linkedin" />
+                  <label>LinkedIn URL</label
+                  ><input
+                    id="cfg-linkedin"
+                    value="https://www.linkedin.com/in/rizkysyahrul/"
+                  />
                 </div>
                 <div class="field">
-                  <label>Email</label><input id="cfg-email" />
+                  <label>Email</label
+                  ><input id="cfg-email" value="rizkysahrul0@gmail.com" />
                 </div>
                 <div class="field">
-                  <label>WhatsApp</label><input id="cfg-wa" />
+                  <label>WhatsApp</label
+                  ><input id="cfg-wa" value="+62 822 5387 7985" />
                 </div>
               </div>
             </div>
@@ -191,36 +157,10 @@
             </button>
           </div>
 
-          <!-- ── ORDER PANEL ── -->
-          <div class="panel" id="panel-order">
-            <p
-              style="
-                font-size: 0.82rem;
-                color: var(--muted);
-                margin-bottom: 1.5rem;
-                line-height: 1.7;
-              "
-            >
-              Drag kartu untuk mengubah urutan tampilan portfolio di halaman
-              utama.<br />
-              Perubahan langsung tersimpan otomatis.
-            </p>
-            <div class="order-list" id="order-list"></div>
-            <div class="order-save-bar" id="order-save-bar">
-              <span class="order-save-hint"
-                >✓ Urutan diperbarui — reload halaman utama untuk melihat
-                hasilnya</span
-              >
-              <a href="index.html" target="_blank" class="btn btn-gold btn-sm"
-                >Lihat Site ↗</a
-              >
-            </div>
-          </div>
-
-          <!-- ── CLOUDINARY PANEL ── -->
+          <!-- CLOUDINARY PANEL -->
           <div class="panel" id="panel-cloudinary">
             <div class="config-section">
-              <h3 class="admin-section-title">Konfigurasi Cloudinary</h3>
+              <h3>Konfigurasi Cloudinary</h3>
               <p
                 style="
                   font-size: 0.8rem;
@@ -236,7 +176,8 @@
                   style="color: var(--gold)"
                   >cloudinary.com</a
                 >. Buka <strong>Settings → Upload</strong> → tambahkan Upload
-                Preset baru dengan mode <strong>Unsigned</strong>.
+                Preset baru dengan mode <strong>Unsigned</strong>. Copy
+                credentials dari Dashboard.
               </p>
               <div class="config-grid">
                 <div class="field">
@@ -250,6 +191,9 @@
                     id="cld-preset"
                     placeholder="mis. portfolio_unsigned"
                   />
+                  <div class="field-hint">
+                    Settings → Upload → Add upload preset → Unsigned
+                  </div>
                 </div>
                 <div class="field">
                   <label>API Key</label>
@@ -263,18 +207,58 @@
                 <span id="cld-test-result" style="font-size: 0.8rem"></span>
               </div>
             </div>
+
+            <div class="config-section" style="margin-top: 2rem">
+              <h3>Cara Setup Upload Preset</h3>
+              <div
+                style="
+                  background: var(--card);
+                  border: 1px solid var(--border);
+                  border-radius: 6px;
+                  padding: 1.25rem;
+                  font-size: 0.8rem;
+                  color: var(--muted);
+                  line-height: 2;
+                "
+              >
+                <div>
+                  1. Login ke
+                  <span style="color: var(--cream)"
+                    >console.cloudinary.com</span
+                  >
+                </div>
+                <div>
+                  2. Klik
+                  <span style="color: var(--cream)">Settings (⚙️)</span> → tab
+                  <span style="color: var(--cream)">Upload</span>
+                </div>
+                <div>
+                  3. Scroll ke
+                  <span style="color: var(--cream)">Upload presets</span> → klik
+                  <span style="color: var(--cream)">Add upload preset</span>
+                </div>
+                <div>
+                  4. Set
+                  <span style="color: var(--cream)"
+                    >Signing mode = Unsigned</span
+                  >
+                </div>
+                <div>
+                  5. Di <span style="color: var(--cream)">Folder</span>, isi:
+                  <span style="color: var(--gold)">rsm-portfolio</span>
+                </div>
+                <div>6. Save. Copy nama preset → paste di field atas.</div>
+              </div>
+            </div>
           </div>
 
-          <!-- ── CLIENT PANELS (dynamic) ── -->
+          <!-- CLIENT PANELS (generated dynamically) -->
           <div id="client-panels"></div>
         </div>
-        <!-- /content -->
       </div>
-      <!-- /main -->
     </div>
-    <!-- /shell -->
 
-    <!-- Toast -->
+    <!-- Toast container -->
     <div id="toast-wrap"></div>
 
     <!-- Add Client Modal -->
@@ -286,12 +270,8 @@
           ><input id="nc-name" placeholder="mis. Brand XYZ" />
         </div>
         <div class="field">
-          <label>Subjudul 🇮🇩 Bahasa Indonesia</label>
-          <input id="nc-sub-id" placeholder="mis. Instagram Reels · Iklan" />
-        </div>
-        <div class="field">
-          <label>Subjudul 🇬🇧 English</label>
-          <input id="nc-sub-en" placeholder="mis. Instagram Reels · Ads" />
+          <label>Subjudul / Tipe Project</label
+          ><input id="nc-sub" placeholder="mis. Instagram Reels · Ads" />
         </div>
         <div class="modal-actions">
           <button class="btn" onclick="closeModal('modal-add-client')">
@@ -324,56 +304,16 @@
     <script>
       // ── Init ──────────────────────────────────────────────────────────
       let currentClientId = null;
+      let uploadQueue = [];
+      let pendingDelFn = null;
 
       function init() {
         loadCldConfig();
-        loadConfigForm();
         renderSidebar();
-        renderOrderPanel();
+        loadConfigForm();
       }
 
-      // ── Bio tabs ──────────────────────────────────────────────────────
-      function showBioTab(lang, btn) {
-        document
-          .querySelectorAll(".bio-tab")
-          .forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById("cfg-bio-id").style.display =
-          lang === "id" ? "block" : "none";
-        document.getElementById("cfg-bio-en").style.display =
-          lang === "en" ? "block" : "none";
-      }
-
-      // ── Config form ───────────────────────────────────────────────────
-      function loadConfigForm() {
-        const data = store.get();
-        const p = data.profile;
-        document.getElementById("cfg-name").value = p.name || "";
-        document.getElementById("cfg-tagline").value = p.tagline || "";
-        document.getElementById("cfg-bio-id").value = p.bio_id || p.bio || "";
-        document.getElementById("cfg-bio-en").value = p.bio_en || "";
-        document.getElementById("cfg-linkedin").value = p.linkedin || "";
-        document.getElementById("cfg-email").value = p.email || "";
-        document.getElementById("cfg-wa").value = p.whatsapp || "";
-      }
-
-      function saveConfig() {
-        const data = store.get();
-        data.profile = {
-          ...data.profile,
-          name: document.getElementById("cfg-name").value,
-          tagline: document.getElementById("cfg-tagline").value,
-          bio_id: document.getElementById("cfg-bio-id").value,
-          bio_en: document.getElementById("cfg-bio-en").value,
-          linkedin: document.getElementById("cfg-linkedin").value,
-          email: document.getElementById("cfg-email").value,
-          whatsapp: document.getElementById("cfg-wa").value,
-        };
-        store.save(data);
-        toast("Perubahan disimpan!", "success");
-      }
-
-      // ── Cloudinary ────────────────────────────────────────────────────
+      // ── Cloudinary config persistence ────────────────────────────────
       function loadCldConfig() {
         const saved = JSON.parse(
           localStorage.getItem("rsm_cld_config") || "{}",
@@ -399,6 +339,7 @@
         const apiKey = document.getElementById("cld-api-key").value.trim();
         if (!cloudName || !preset)
           return toast("Cloud Name dan Preset wajib diisi", "error");
+
         CLD_CONFIG.cloudName = cloudName;
         CLD_CONFIG.uploadPreset = preset;
         CLD_CONFIG.apiKey = apiKey;
@@ -406,6 +347,9 @@
           "rsm_cld_config",
           JSON.stringify({ cloudName, uploadPreset: preset, apiKey }),
         );
+
+        // Test dengan ping ke Cloudinary
+        const testUrl = `https://res.cloudinary.com/${cloudName}/image/upload/w_1,q_1/sample.jpg`;
         const img = new Image();
         img.onload = () => {
           updateCldStatus(true, cloudName);
@@ -418,24 +362,24 @@
           document.getElementById("cld-test-result").innerHTML =
             '<span style="color:var(--red)">✗ Cloud name tidak ditemukan</span>';
         };
-        img.src = `https://res.cloudinary.com/${cloudName}/image/upload/w_1,q_1/sample.jpg`;
+        img.src = testUrl;
       }
 
       function updateCldStatus(ok, name = "") {
-        document.getElementById("cld-dot").className =
-          "cld-dot " + (ok ? "ok" : "err");
-        document.getElementById("cld-status-text").textContent = ok
-          ? name
-          : "Belum dikonfigurasi";
+        const dot = document.getElementById("cld-dot");
+        const text = document.getElementById("cld-status-text");
+        dot.className = "cld-dot " + (ok ? "ok" : "err");
+        text.textContent = ok ? name : "Belum dikonfigurasi";
       }
 
       // ── Sidebar ───────────────────────────────────────────────────────
       function renderSidebar() {
         const data = store.get();
-        document.getElementById("sidebar-clients").innerHTML = data.clients
+        const wrap = document.getElementById("sidebar-clients");
+        wrap.innerHTML = data.clients
           .map(
-            (c) => `
-    <button class="nav-item" data-panel="client-${c.id}" onclick="switchPanel(this);openClient('${c.id}')">
+            (c, i) => `
+    <button class="nav-item" data-panel="client-${c.id}" onclick="switchPanel(this); openClient('${c.id}')">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
         <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
       </svg>
@@ -447,16 +391,16 @@
           .join("");
       }
 
-      // ── Panel switch ──────────────────────────────────────────────────
+      // ── Panel switching ───────────────────────────────────────────────
       function switchPanel(btn) {
         document
           .querySelectorAll(".nav-item")
           .forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
+        const panelId = btn.dataset.panel;
         document
           .querySelectorAll(".panel")
           .forEach((p) => p.classList.remove("active"));
-        const panelId = btn.dataset.panel;
         let panel = document.getElementById("panel-" + panelId);
         if (!panel) {
           panel = document.createElement("div");
@@ -465,9 +409,9 @@
           document.getElementById("client-panels").appendChild(panel);
         }
         panel.classList.add("active");
+
         const titles = {
           config: ["Pengaturan", "Profil & kontak"],
-          order: ["Urutan Portfolio", "Drag untuk mengubah urutan tampilan"],
           cloudinary: ["Cloudinary", "Konfigurasi media hosting"],
         };
         if (titles[panelId]) {
@@ -477,117 +421,6 @@
             titles[panelId][1];
           document.getElementById("topbar-actions").innerHTML = "";
         }
-        if (panelId === "order") renderOrderPanel();
-      }
-
-      // ── ORDER PANEL ───────────────────────────────────────────────────
-      let dragSrcIdx = null;
-
-      function renderOrderPanel() {
-        const data = store.get();
-        const listEl = document.getElementById("order-list");
-        if (!listEl) return;
-        listEl.innerHTML = "";
-
-        data.clients.forEach((client, idx) => {
-          const item = document.createElement("div");
-          item.className = "order-item";
-          item.draggable = true;
-          item.dataset.idx = idx;
-          item.dataset.clientId = client.id;
-
-          const sub = client.sub_id || client.sub || "";
-          item.innerHTML = `
-      <div class="order-handle"><span></span><span></span><span></span></div>
-      <div class="order-num">${idx + 1}</div>
-      <div class="order-info">
-        <div class="order-name">${client.name}</div>
-        <div class="order-sub">${sub}</div>
-      </div>
-      <span class="order-count">${client.items.length} media</span>
-    `;
-
-          // Drag events
-          item.addEventListener("dragstart", (e) => {
-            dragSrcIdx = idx;
-            item.classList.add("dragging");
-            e.dataTransfer.effectAllowed = "move";
-          });
-          item.addEventListener("dragend", () => {
-            item.classList.remove("dragging");
-            listEl
-              .querySelectorAll(".order-item")
-              .forEach((el) => el.classList.remove("drag-over"));
-          });
-          item.addEventListener("dragover", (e) => {
-            e.preventDefault();
-            e.dataTransfer.dropEffect = "move";
-            listEl
-              .querySelectorAll(".order-item")
-              .forEach((el) => el.classList.remove("drag-over"));
-            item.classList.add("drag-over");
-          });
-          item.addEventListener("drop", (e) => {
-            e.preventDefault();
-            const toIdx = parseInt(item.dataset.idx);
-            if (dragSrcIdx === null || dragSrcIdx === toIdx) return;
-            store.reorderClients(dragSrcIdx, toIdx);
-            dragSrcIdx = null;
-            renderOrderPanel();
-            renderSidebar();
-            document.getElementById("order-save-bar").classList.add("visible");
-            toast("Urutan diperbarui!", "success");
-          });
-
-          // Touch support (mobile)
-          let touchY = 0;
-          item.addEventListener(
-            "touchstart",
-            (e) => {
-              touchY = e.touches[0].clientY;
-              dragSrcIdx = idx;
-            },
-            { passive: true },
-          );
-          item.addEventListener(
-            "touchmove",
-            (e) => {
-              e.preventDefault();
-              const y = e.touches[0].clientY;
-              const dy = y - touchY;
-              const items = Array.from(listEl.querySelectorAll(".order-item"));
-              const rect = item.getBoundingClientRect();
-              items.forEach((el) => el.classList.remove("drag-over"));
-              if (dy < -rect.height / 2 && idx > 0)
-                items[idx - 1]?.classList.add("drag-over");
-              if (dy > rect.height / 2 && idx < items.length - 1)
-                items[idx + 1]?.classList.add("drag-over");
-            },
-            { passive: false },
-          );
-          item.addEventListener("touchend", (e) => {
-            const items = Array.from(listEl.querySelectorAll(".order-item"));
-            const overEl = items.find((el) =>
-              el.classList.contains("drag-over"),
-            );
-            if (overEl) {
-              const toIdx = parseInt(overEl.dataset.idx);
-              if (toIdx !== dragSrcIdx) {
-                store.reorderClients(dragSrcIdx, toIdx);
-                renderOrderPanel();
-                renderSidebar();
-                document
-                  .getElementById("order-save-bar")
-                  .classList.add("visible");
-                toast("Urutan diperbarui!", "success");
-              }
-            }
-            items.forEach((el) => el.classList.remove("drag-over"));
-            dragSrcIdx = null;
-          });
-
-          listEl.appendChild(item);
-        });
       }
 
       // ── Client panel ──────────────────────────────────────────────────
@@ -598,10 +431,10 @@
         if (!client) return;
 
         document.getElementById("topbar-title").textContent = client.name;
-        document.getElementById("topbar-sub").textContent =
-          client.sub_id || client.sub || "";
-        document.getElementById("topbar-actions").innerHTML =
-          `<button class="btn btn-danger btn-sm" onclick="confirmDeleteClient('${clientId}')">Hapus Client</button>`;
+        document.getElementById("topbar-sub").textContent = client.sub;
+        document.getElementById("topbar-actions").innerHTML = `
+    <button class="btn btn-danger btn-sm" onclick="confirmDeleteClient('${clientId}')">Hapus Client</button>
+  `;
 
         const panelId = "panel-client-" + clientId;
         let panel = document.getElementById(panelId);
@@ -617,27 +450,19 @@
 
       function renderClientPanel(client) {
         return `
-    <!-- Meta edit -->
-    <div class="client-meta" style="background:var(--card);border:1px solid var(--border);border-radius:6px;padding:1rem;margin-bottom:1.5rem">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+    <div class="client-meta">
+      <div class="client-meta-grid">
         <div class="field">
           <label>Nama Client</label>
           <input id="cm-name-${client.id}" value="${client.name}" onchange="updateClientMeta('${client.id}')"/>
         </div>
-        <div style="grid-column:span 2">
-          <div class="field">
-            <label>Subjudul 🇮🇩 Indonesia</label>
-            <input id="cm-sub-id-${client.id}" value="${client.sub_id || client.sub || ""}" onchange="updateClientMeta('${client.id}')"/>
-          </div>
-          <div class="field" style="margin-top:.5rem">
-            <label>Subjudul 🇬🇧 English</label>
-            <input id="cm-sub-en-${client.id}" value="${client.sub_en || ""}" onchange="updateClientMeta('${client.id}')"/>
-          </div>
+        <div class="field">
+          <label>Subjudul</label>
+          <input id="cm-sub-${client.id}" value="${client.sub}" onchange="updateClientMeta('${client.id}')"/>
         </div>
       </div>
     </div>
 
-    <!-- Upload zone -->
     <div class="upload-zone" id="dropzone-${client.id}">
       <input type="file" multiple accept="video/*,image/*" onchange="handleFiles(event,'${client.id}')"/>
       <div class="upload-icon">⬆</div>
@@ -648,83 +473,27 @@
 
     <div class="queue" id="queue-${client.id}"></div>
 
-    <!-- Media reorder hint -->
-    ${
-      client.items.length > 1
-        ? `
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">
-        <h3 class="admin-section-title" style="margin:0">Media (${client.items.length}) — drag untuk ubah urutan</h3>
-      </div>
-      <div class="media-reorder-grid" id="mr-grid-${client.id}">
-        ${client.items.map((item, i) => renderReorderCard(item, client.id, i)).join("")}
-      </div>
-    `
-        : `
-      <h3 class="admin-section-title">Media (${client.items.length})</h3>
-    `
-    }
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+      <h3 style="font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">
+        Media (${client.items.length})
+      </h3>
+    </div>
 
     <div class="media-grid" id="media-grid-${client.id}">
       ${
         client.items.length === 0
-          ? `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🎬</div><p>Belum ada media. Upload video atau foto di atas.</p></div>`
+          ? `
+        <div class="empty" style="grid-column:1/-1">
+          <div class="empty-icon">🎬</div>
+          <p>Belum ada media. Upload video atau foto di atas.</p>
+        </div>
+      `
           : client.items
               .map((item) => renderMediaCard(item, client.id))
               .join("")
       }
     </div>
   `;
-      }
-
-      function renderReorderCard(item, clientId, idx) {
-        const isVideo = item.type === "video";
-        const thumb = item.thumbUrl || cld.thumb(item.publicId, { w: 300 });
-        const arClass =
-          item.width && item.height && item.width > item.height
-            ? "landscape"
-            : "";
-        return `
-    <div class="media-reorder-item" draggable="true"
-      data-media-idx="${idx}" data-client-id="${clientId}"
-      ondragstart="mediaDragStart(event,${idx},'${clientId}')"
-      ondragover="mediaDragOver(event)"
-      ondrop="mediaDrop(event,${idx},'${clientId}')"
-      ondragend="mediaDragEnd(event)">
-      <img class="media-reorder-thumb ${arClass}" src="${thumb}" loading="lazy"/>
-      <div class="media-reorder-body">
-        <div class="media-reorder-title">${item.title || "Untitled"}</div>
-        <div class="media-reorder-sub">${isVideo ? "▶ Video" : "🖼 Photo"}</div>
-      </div>
-    </div>`;
-      }
-
-      let mediaDragSrcIdx = null;
-      function mediaDragStart(e, idx, clientId) {
-        mediaDragSrcIdx = idx;
-        e.currentTarget.classList.add("dragging");
-        e.dataTransfer.effectAllowed = "move";
-      }
-      function mediaDragOver(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = "move";
-        document
-          .querySelectorAll(".media-reorder-item")
-          .forEach((el) => el.classList.remove("drag-over"));
-        e.currentTarget.classList.add("drag-over");
-      }
-      function mediaDrop(e, toIdx, clientId) {
-        e.preventDefault();
-        if (mediaDragSrcIdx === null || mediaDragSrcIdx === toIdx) return;
-        store.reorderMedia(clientId, mediaDragSrcIdx, toIdx);
-        mediaDragSrcIdx = null;
-        openClient(clientId);
-        toast("Urutan media diperbarui!", "success");
-      }
-      function mediaDragEnd(e) {
-        e.currentTarget.classList.remove("dragging");
-        document
-          .querySelectorAll(".media-reorder-item")
-          .forEach((el) => el.classList.remove("drag-over"));
       }
 
       function renderMediaCard(item, clientId) {
@@ -735,7 +504,9 @@
         return `
     <div class="media-card" id="mc-${item.id}">
       <div class="media-thumb-wrap">
-        <img class="media-thumb" src="${thumb}" alt="${item.title}" style="aspect-ratio:${item.width && item.height ? item.width + "/" + item.height : "3/4"}" loading="lazy"/>
+        <img class="media-thumb" src="${thumb}" alt="${item.title}"
+          style="aspect-ratio:${item.width && item.height ? item.width + "/" + item.height : "3/4"}"
+          loading="lazy"/>
         <div class="media-type-badge">${isVideo ? "▶ Video" : "🖼 Image"}</div>
       </div>
       <div class="media-card-body">
@@ -746,7 +517,8 @@
           <button class="media-card-del" onclick="deleteMedia('${clientId}','${item.id}')">Hapus</button>
         </div>
       </div>
-    </div>`;
+    </div>
+  `;
       }
 
       // ── Upload ────────────────────────────────────────────────────────
@@ -779,22 +551,18 @@
           CLD_CONFIG.cloudName === "YOUR_CLOUD_NAME"
         ) {
           toast("Konfigurasi Cloudinary dulu!", "error");
+          switchPanel(document.querySelector('[data-panel="cloudinary"]'));
           return;
         }
-        if (!window._fileMap) window._fileMap = {};
         files.forEach((file) => {
-          const id = "" + Date.now() + Math.round(Math.random() * 1e6);
-          window._fileMap[id] = file;
-          renderQueueItem(
-            {
-              file,
-              clientId,
-              id,
-              title: file.name.replace(/\.[^.]+$/, ""),
-              subtitle: "",
-            },
+          const queueItem = {
+            file,
             clientId,
-          );
+            id: Date.now() + Math.random(),
+            title: file.name.replace(/\.[^.]+$/, ""),
+            subtitle: "",
+          };
+          renderQueueItem(queueItem, clientId);
         });
       }
 
@@ -802,11 +570,20 @@
         const queueWrap = document.getElementById("queue-" + clientId);
         const isVideo = item.file.type.startsWith("video/");
         const size = (item.file.size / 1024 / 1024).toFixed(1) + " MB";
+
         const div = document.createElement("div");
         div.className = "queue-item";
         div.id = "qi-" + item.id;
+
+        // Generate preview thumb
+        let thumbSrc = "";
+        if (!isVideo) {
+          const url = URL.createObjectURL(item.file);
+          thumbSrc = url;
+        }
+
         div.innerHTML = `
-    <img class="queue-thumb" id="qt-${item.id}" alt="thumb" style="background:var(--border)"/>
+    <img class="queue-thumb" src="${thumbSrc || ""}" id="qt-${item.id}" alt="thumb" style="${!thumbSrc ? "background:var(--border)" : ""}"/>
     <div class="queue-info">
       <div class="queue-name">${item.file.name}</div>
       <div class="queue-size">${size} · ${isVideo ? "Video" : "Image"}</div>
@@ -817,16 +594,12 @@
       <div class="queue-progress"><div class="queue-bar" id="qb-${item.id}"></div></div>
       <div class="queue-status" id="qs-${item.id}">Siap diupload</div>
     </div>
-    <button class="btn btn-gold btn-sm" onclick="doUpload('${item.id}','${clientId}',this)">Upload</button>`;
+    <button class="btn btn-gold btn-sm" onclick="startUpload('${item.id}','${clientId}',this)" id="qbtn-${item.id}">Upload</button>
+  `;
         queueWrap.appendChild(div);
-        if (!isVideo) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const t = document.getElementById("qt-" + item.id);
-            if (t) t.src = e.target.result;
-          };
-          reader.readAsDataURL(item.file);
-        } else {
+
+        // Video thumbnail preview
+        if (isVideo) {
           const video = document.createElement("video");
           video.src = URL.createObjectURL(item.file);
           video.currentTime = 1;
@@ -836,39 +609,184 @@
             c.width = 96;
             c.height = 96;
             c.getContext("2d").drawImage(video, 0, 0, 96, 96);
-            const t = document.getElementById("qt-" + item.id);
-            if (t) t.src = c.toDataURL();
+            const thumb = document.getElementById("qt-" + item.id);
+            if (thumb) thumb.src = c.toDataURL();
             URL.revokeObjectURL(video.src);
           });
         }
+
+        item._div = div;
       }
 
-      async function doUpload(queueId, clientId, btn) {
-        const file = (window._fileMap || {})[queueId];
-        const titleEl = document.getElementById("qt-title-" + queueId);
-        const subEl = document.getElementById("qt-sub-" + queueId);
+      async function startUpload(queueId, clientId, btn) {
+        const titleInput = document.getElementById("qt-title-" + queueId);
+        const subInput = document.getElementById("qt-sub-" + queueId);
         const bar = document.getElementById("qb-" + queueId);
         const status = document.getElementById("qs-" + queueId);
-        const qItem = document.getElementById("qi-" + queueId);
+
+        // Find file from DOM (we'll use a file map)
+        if (!window._fileMap) window._fileMap = {};
+        const queueWrap = document.getElementById("queue-" + clientId);
+        const qItem = queueWrap.querySelector("#qi-" + queueId);
+        const file = window._fileMap[queueId];
         if (!file) {
-          toast("File tidak ditemukan, coba upload ulang", "error");
+          // Fallback: trigger file input
+          toast("Re-select file untuk upload", "error");
           return;
         }
+
         btn.disabled = true;
         btn.textContent = "…";
         status.className = "queue-status uploading";
         status.textContent = "Mengupload...";
-        const fd = new FormData();
-        fd.append("file", file);
-        fd.append("upload_preset", CLD_CONFIG.uploadPreset);
-        fd.append("folder", "rsm-portfolio");
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLD_CONFIG.uploadPreset);
+        formData.append("folder", "rsm-portfolio");
+        formData.append(
+          "context",
+          `title=${titleInput.value}|subtitle=${subInput.value}`,
+        );
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", cld.uploadUrl());
+
+        xhr.upload.onprogress = (e) => {
+          if (e.lengthComputable) {
+            const pct = Math.round((e.loaded / e.total) * 100);
+            bar.style.width = pct + "%";
+            status.textContent = `Mengupload... ${pct}%`;
+          }
+        };
+
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const res = JSON.parse(xhr.responseText);
+            const mediaItem = {
+              id: res.public_id.replace(/\//g, "_"),
+              publicId: res.public_id,
+              type: res.resource_type,
+              title: titleInput.value || res.original_filename,
+              subtitle: subInput.value,
+              width: res.width,
+              height: res.height,
+              thumbUrl: cld.thumb(res.public_id, { w: 400 }),
+              url: res.secure_url,
+              format: res.format,
+            };
+
+            store.addMedia(clientId, mediaItem);
+            bar.style.width = "100%";
+            status.className = "queue-status done";
+            status.textContent = "✓ Berhasil!";
+            btn.textContent = "✓";
+
+            // Add to media grid
+            const grid = document.getElementById("media-grid-" + clientId);
+            const empty = grid.querySelector(".empty");
+            if (empty) empty.remove();
+            grid.insertAdjacentHTML(
+              "afterbegin",
+              renderMediaCard(mediaItem, clientId),
+            );
+
+            // Update sidebar count
+            renderSidebar();
+            toast(`"${mediaItem.title}" berhasil diupload!`, "success");
+
+            // Remove from queue after 2s
+            setTimeout(() => {
+              qItem?.remove();
+            }, 2000);
+          } else {
+            status.className = "queue-status error";
+            status.textContent = "✗ Gagal upload. Cek konfigurasi Cloudinary.";
+            btn.disabled = false;
+            btn.textContent = "Retry";
+            toast("Upload gagal", "error");
+          }
+        };
+        xhr.onerror = () => {
+          status.className = "queue-status error";
+          status.textContent = "✗ Network error";
+          btn.disabled = false;
+          btn.textContent = "Retry";
+        };
+
+        xhr.send(formData);
+      }
+
+      // Override file input to store file ref
+      document.addEventListener("change", (e) => {
+        if (e.target.type === "file" && e.target.closest(".upload-zone")) {
+          const files = Array.from(e.target.files).filter(
+            (f) => f.type.startsWith("video/") || f.type.startsWith("image/"),
+          );
+          if (!window._fileMap) window._fileMap = {};
+          files.forEach((file) => {
+            const id = Date.now() + Math.random();
+            window._fileMap[id] = file;
+          });
+        }
+      });
+
+      // Better: intercept processFiles to store the file map
+      const _origProcessFiles = processFiles;
+      window.processFiles = function (files, clientId) {
+        if (
+          !CLD_CONFIG.cloudName ||
+          CLD_CONFIG.cloudName === "YOUR_CLOUD_NAME"
+        ) {
+          toast("Konfigurasi Cloudinary dulu!", "error");
+          return;
+        }
+        if (!window._fileMap) window._fileMap = {};
+        files.forEach((file) => {
+          const id = "" + Date.now() + Math.round(Math.random() * 1e6);
+          window._fileMap[id] = file;
+          const queueItem = {
+            file,
+            clientId,
+            id,
+            title: file.name.replace(/\.[^.]+$/, ""),
+            subtitle: "",
+          };
+          renderQueueItem(queueItem, clientId);
+        });
+      };
+
+      // Patch startUpload to look up file from _fileMap properly
+      window.startUpload = async function (queueId, clientId, btn) {
+        const titleInput = document.getElementById("qt-title-" + queueId);
+        const subInput = document.getElementById("qt-sub-" + queueId);
+        const bar = document.getElementById("qb-" + queueId);
+        const status = document.getElementById("qs-" + queueId);
+        const qItem = document.getElementById("qi-" + queueId);
+        const file = (window._fileMap || {})[queueId];
+
+        if (!file) {
+          toast("File tidak ditemukan, coba upload ulang", "error");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "…";
+        status.className = "queue-status uploading";
+        status.textContent = "Mengupload...";
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", CLD_CONFIG.uploadPreset);
+        formData.append("folder", "rsm-portfolio");
+
         const xhr = new XMLHttpRequest();
         xhr.open("POST", cld.uploadUrl());
         xhr.upload.onprogress = (e) => {
           if (e.lengthComputable) {
-            const p = Math.round((e.loaded / e.total) * 100);
-            bar.style.width = p + "%";
-            status.textContent = "Mengupload... " + p + "%";
+            const pct = Math.round((e.loaded / e.total) * 100);
+            bar.style.width = pct + "%";
+            status.textContent = `Mengupload... ${pct}%`;
           }
         };
         xhr.onload = () => {
@@ -878,8 +796,8 @@
               id: res.public_id.replace(/\//g, "_") + "_" + Date.now(),
               publicId: res.public_id,
               type: res.resource_type,
-              title: titleEl.value || res.original_filename,
-              subtitle: subEl.value,
+              title: titleInput.value || res.original_filename,
+              subtitle: subInput.value,
               width: res.width,
               height: res.height,
               thumbUrl: cld.thumb(res.public_id, { w: 400 }),
@@ -892,26 +810,29 @@
             status.textContent = "✓ Berhasil!";
             btn.textContent = "✓";
             const grid = document.getElementById("media-grid-" + clientId);
-            const empty = grid?.querySelector(".empty");
+            const empty = grid.querySelector(".empty");
             if (empty) empty.remove();
-            grid?.insertAdjacentHTML(
+            grid.insertAdjacentHTML(
               "afterbegin",
               renderMediaCard(mediaItem, clientId),
             );
             renderSidebar();
-            renderOrderPanel();
             toast(`"${mediaItem.title}" berhasil diupload!`, "success");
             setTimeout(() => {
               qItem?.remove();
-              delete (window._fileMap || {})[queueId];
+              delete window._fileMap[queueId];
             }, 2000);
           } else {
-            const err = JSON.parse(xhr.responseText || "{}");
+            const errBody = JSON.parse(xhr.responseText || "{}");
             status.className = "queue-status error";
-            status.textContent = "✗ " + (err.error?.message || "Gagal upload");
+            status.textContent =
+              "✗ " + (errBody.error?.message || "Gagal upload");
             btn.disabled = false;
             btn.textContent = "Retry";
-            toast("Upload gagal", "error");
+            toast(
+              "Upload gagal: " + (errBody.error?.message || "Error"),
+              "error",
+            );
           }
         };
         xhr.onerror = () => {
@@ -920,66 +841,102 @@
           btn.disabled = false;
           btn.textContent = "Retry";
         };
-        xhr.send(fd);
-      }
+        xhr.send(formData);
+      };
 
       // ── Delete ────────────────────────────────────────────────────────
       function deleteMedia(clientId, mediaId) {
-        document.getElementById("confirm-del-btn").onclick = () => {
+        pendingDelFn = () => {
           store.removeMedia(clientId, mediaId);
           document.getElementById("mc-" + mediaId)?.remove();
+          const grid = document.getElementById("media-grid-" + clientId);
+          const data = store.get();
+          const client = data.clients.find((c) => c.id === clientId);
+          if (client && client.items.length === 0) {
+            grid.innerHTML =
+              '<div class="empty" style="grid-column:1/-1"><div class="empty-icon">🎬</div><p>Belum ada media.</p></div>';
+          }
           renderSidebar();
-          renderOrderPanel();
           toast("Media dihapus", "success");
           closeModal("modal-confirm-del");
-          openClient(clientId); // refresh reorder grid
         };
+        document.getElementById("confirm-del-btn").onclick = pendingDelFn;
         document.getElementById("modal-confirm-del").classList.add("open");
       }
 
       function confirmDeleteClient(clientId) {
-        document.getElementById("confirm-del-btn").onclick = () => {
+        pendingDelFn = () => {
           store.removeClient(clientId);
           renderSidebar();
-          renderOrderPanel();
           document.getElementById("panel-client-" + clientId)?.remove();
-          switchPanel(document.querySelector("[data-panel='config']"));
+          switchPanel(document.querySelector('[data-panel="config"]'));
+          openPanel("config");
           toast("Client dihapus", "success");
           closeModal("modal-confirm-del");
         };
+        document.getElementById("confirm-del-btn").onclick = pendingDelFn;
         document.getElementById("modal-confirm-del").classList.add("open");
       }
 
-      // ── Add Client ────────────────────────────────────────────────────
+      // ── Add client ────────────────────────────────────────────────────
       function openAddClientModal() {
         document.getElementById("modal-add-client").classList.add("open");
         document.getElementById("nc-name").focus();
       }
       function confirmAddClient() {
         const name = document.getElementById("nc-name").value.trim();
-        const sub_id = document.getElementById("nc-sub-id").value.trim();
-        const sub_en = document.getElementById("nc-sub-en").value.trim();
+        const sub = document.getElementById("nc-sub").value.trim();
         if (!name) return toast("Nama client wajib diisi", "error");
         const id = name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-        store.addClient({ id, name, sub_id, sub_en, sub: sub_id, items: [] });
+        store.addClient({ id, name, sub, items: [] });
         renderSidebar();
-        renderOrderPanel();
         closeModal("modal-add-client");
-        ["nc-name", "nc-sub-id", "nc-sub-en"].forEach(
-          (i) => (document.getElementById(i).value = ""),
-        );
+        document.getElementById("nc-name").value = "";
+        document.getElementById("nc-sub").value = "";
         toast(`Client "${name}" ditambahkan`, "success");
       }
 
       function updateClientMeta(clientId) {
         const name = document.getElementById("cm-name-" + clientId)?.value;
-        const sub_id = document.getElementById("cm-sub-id-" + clientId)?.value;
-        const sub_en = document.getElementById("cm-sub-en-" + clientId)?.value;
+        const sub = document.getElementById("cm-sub-" + clientId)?.value;
         if (name) {
-          store.updateClient(clientId, { name, sub_id, sub_en, sub: sub_id });
+          store.updateClient(clientId, { name, sub });
           renderSidebar();
-          renderOrderPanel();
         }
+      }
+
+      // ── Config form ───────────────────────────────────────────────────
+      function loadConfigForm() {
+        const data = store.get();
+        const p = data.profile;
+        document.getElementById("cfg-name").value = p.name || "";
+        document.getElementById("cfg-tagline").value = p.tagline || "";
+        document.getElementById("cfg-bio").value = p.bio || "";
+        document.getElementById("cfg-linkedin").value = p.linkedin || "";
+        document.getElementById("cfg-email").value = p.email || "";
+        document.getElementById("cfg-wa").value = p.whatsapp || "";
+      }
+
+      function saveConfig() {
+        const data = store.get();
+        data.profile = {
+          ...data.profile,
+          name: document.getElementById("cfg-name").value,
+          tagline: document.getElementById("cfg-tagline").value,
+          bio: document.getElementById("cfg-bio").value,
+          linkedin: document.getElementById("cfg-linkedin").value,
+          email: document.getElementById("cfg-email").value,
+          whatsapp: document.getElementById("cfg-wa").value,
+        };
+        store.save(data);
+        toast("Perubahan disimpan!", "success");
+      }
+
+      function openPanel(panelId) {
+        document
+          .querySelectorAll(".panel")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById("panel-" + panelId)?.classList.add("active");
       }
 
       // ── Modal helpers ─────────────────────────────────────────────────
