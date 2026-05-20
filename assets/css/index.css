@@ -807,3 +807,34 @@ footer a {
     width: 48%;
   }
 }
+/* ── Language Switcher ── */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  padding: 3px;
+}
+.lang-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2rem;
+  transition: all 0.25s;
+}
+.lang-btn.active {
+  background: var(--gold);
+  color: #0d0c0a;
+  font-weight: 500;
+}
+.lang-btn:hover:not(.active) {
+  color: var(--cream);
+}
