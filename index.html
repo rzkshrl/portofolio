@@ -6,25 +6,49 @@
     <title>Rizky Syahrul M — Videography · Motion · Design</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/index.css" />
     <style>
       /* ── Language switcher ── */
-      .lang-wrap { display:flex; align-items:center; gap:.75rem; }
+      .lang-wrap {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
       .lang-sw {
-        display:flex; align-items:center; gap:2px;
-        background:rgba(255,255,255,.05); border:1px solid var(--border);
-        border-radius:2rem; padding:3px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: 2rem;
+        padding: 3px;
       }
       .lang-btn {
-        border:none; background:transparent; cursor:pointer;
-        color:var(--muted); font-family:var(--sans); font-size:.68rem;
-        letter-spacing:.1em; text-transform:uppercase;
-        padding:.25rem .7rem; border-radius:2rem; line-height:1;
-        transition:all .2s;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.7rem;
+        border-radius: 2rem;
+        line-height: 1;
+        transition: all 0.2s;
       }
-      .lang-btn.active { background:var(--gold); color:#0D0C0A; font-weight:500; }
-      .lang-btn:hover:not(.active) { color:var(--cream); }
+      .lang-btn.active {
+        background: var(--gold);
+        color: #0d0c0a;
+        font-weight: 500;
+      }
+      .lang-btn:hover:not(.active) {
+        color: var(--cream);
+      }
     </style>
   </head>
   <body>
@@ -37,13 +61,17 @@
       <a href="#" class="logo">Rizky Syahrul</a>
       <ul class="nav-links">
         <li><a href="#projects" id="nav-work">Work</a></li>
-        <li><a href="#self"     id="nav-personal">Personal</a></li>
-        <li><a href="#contact"  id="nav-contact">Contact</a></li>
+        <li><a href="#self" id="nav-personal">Personal</a></li>
+        <li><a href="#contact" id="nav-contact">Contact</a></li>
       </ul>
       <div class="lang-wrap">
         <div class="lang-sw">
-          <button class="lang-btn" data-lang="id" onclick="setLang('id')">ID</button>
-          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="id" onclick="setLang('id')">
+            ID
+          </button>
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">
+            EN
+          </button>
         </div>
         <a href="#contact" class="nav-cta" id="nav-hire">Hire Me</a>
       </div>
@@ -64,8 +92,22 @@
           </div>
         </div>
         <div class="hero-imgs">
-          <div class="hi1"><img src="assets/img/1.webp" alt="Rizky Syahrul" loading="eager" width="700" /></div>
-          <div class="hi2"><img src="assets/img/2.webp" alt="Rizky Syahrul" loading="eager" width="600" /></div>
+          <div class="hi1">
+            <img
+              src="assets/img/1.webp"
+              alt="Rizky Syahrul"
+              loading="eager"
+              width="700"
+            />
+          </div>
+          <div class="hi2">
+            <img
+              src="assets/img/2.webp"
+              alt="Rizky Syahrul"
+              loading="eager"
+              width="600"
+            />
+          </div>
           <div class="hero-badge" id="h-badge"></div>
         </div>
       </div>
@@ -105,16 +147,41 @@
     <div id="contact">
       <div class="contact-grid">
         <div class="rev">
-          <p id="c-label" style="font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem"></p>
-          <h2 class="contact-h"><span id="c-h1"></span><br /><em id="c-h2"></em></h2>
+          <p
+            id="c-label"
+            style="
+              font-size: 0.7rem;
+              letter-spacing: 0.22em;
+              text-transform: uppercase;
+              color: var(--gold);
+              margin-bottom: 1rem;
+            "
+          ></p>
+          <h2 class="contact-h">
+            <span id="c-h1"></span><br /><em id="c-h2"></em>
+          </h2>
           <p class="contact-desc" id="c-desc"></p>
         </div>
         <div class="contact-items" id="contact-items">
-          <a id="ci-li" href="#" target="_blank" class="ci" style="transition-delay:.1s">
+          <a
+            id="ci-li"
+            href="#"
+            target="_blank"
+            class="ci"
+            style="transition-delay: 0.1s"
+          >
             <div class="ci-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"
+                />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
               </svg>
             </div>
             <div>
@@ -123,11 +190,18 @@
               <div class="ci-hint" id="c-li-hint"></div>
             </div>
           </a>
-          <a id="ci-em" href="#" class="ci" style="transition-delay:.2s">
+          <a id="ci-em" href="#" class="ci" style="transition-delay: 0.2s">
             <div class="ci-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
               </svg>
             </div>
             <div>
@@ -136,10 +210,23 @@
               <div class="ci-hint" id="c-em-hint"></div>
             </div>
           </a>
-          <a id="ci-wa" href="#" target="_blank" class="ci" style="transition-delay:.3s">
+          <a
+            id="ci-wa"
+            href="#"
+            target="_blank"
+            class="ci"
+            style="transition-delay: 0.3s"
+          >
             <div class="ci-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+                />
               </svg>
             </div>
             <div>
@@ -162,168 +249,182 @@
     <script src="cloudinary.js"></script>
     <script>
       /* ── Cursor ── */
-      const curDot  = document.getElementById("cur");
+      const curDot = document.getElementById("cur");
       const curRing = document.getElementById("cur-r");
-      let rx=0, ry=0, mx=0, my=0;
-      document.addEventListener("mousemove", e => { mx=e.clientX; my=e.clientY; curDot.style.left=mx+"px"; curDot.style.top=my+"px"; });
-      (function loop(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; curRing.style.left=rx+"px"; curRing.style.top=ry+"px"; requestAnimationFrame(loop); })();
-      document.addEventListener("mouseover", e => { if(e.target.closest("a,button,.mc,.tag")) document.body.classList.add("hovering"); });
-      document.addEventListener("mouseout",  e => { if(e.target.closest("a,button,.mc,.tag")) document.body.classList.remove("hovering"); });
+      let rx = 0,
+        ry = 0,
+        mx = 0,
+        my = 0;
+      document.addEventListener("mousemove", (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        curDot.style.left = mx + "px";
+        curDot.style.top = my + "px";
+      });
+      (function loop() {
+        rx += (mx - rx) * 0.1;
+        ry += (my - ry) * 0.1;
+        curRing.style.left = rx + "px";
+        curRing.style.top = ry + "px";
+        requestAnimationFrame(loop);
+      })();
+      document.addEventListener("mouseover", (e) => {
+        if (e.target.closest("a,button,.mc,.tag"))
+          document.body.classList.add("hovering");
+      });
+      document.addEventListener("mouseout", (e) => {
+        if (e.target.closest("a,button,.mc,.tag"))
+          document.body.classList.remove("hovering");
+      });
 
       /* ── Progress + Nav ── */
-      const prog  = document.getElementById("prog");
+      const prog = document.getElementById("prog");
       const navEl = document.getElementById("nav");
-      window.addEventListener("scroll", () => {
-        prog.style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + "%";
-        navEl.classList.toggle("s", scrollY > 60);
-      }, { passive: true });
+      window.addEventListener(
+        "scroll",
+        () => {
+          prog.style.width =
+            (scrollY / (document.body.scrollHeight - innerHeight)) * 100 + "%";
+          navEl.classList.toggle("s", scrollY > 60);
+        },
+        { passive: true },
+      );
 
       /* ── Language ── */
-      function setLang(lang) { i18n.set(lang); applyLang(); }
-
-      function applyLang() {
-        const lang = i18n.get();
-        const data = store.get();
-        const p    = data.profile;
-
-        // html lang attr + buttons
-        document.documentElement.lang = lang;
-        document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
-
-        // Nav
-        document.getElementById("nav-work").textContent    = i18n.t("nav.work");
-        document.getElementById("nav-personal").textContent= i18n.t("nav.personal");
-        document.getElementById("nav-contact").textContent = i18n.t("nav.contact");
-        document.getElementById("nav-hire").textContent    = i18n.t("nav.hire");
-
-        // Hero
-        document.getElementById("h-eyebrow").textContent = i18n.t("hero.eyebrow");
-        document.getElementById("h-scroll").textContent  = i18n.t("hero.scroll");
-        document.getElementById("h-badge").textContent   = i18n.t("hero.badge");
-        document.getElementById("h-bio").textContent     = lang === "en"
-          ? (p.bio_en || p.bio_id || p.bio || "")
-          : (p.bio_id || p.bio || "");
-
-        // Contact
-        document.getElementById("c-label").textContent   = i18n.t("contact.label");
-        document.getElementById("c-h1").textContent      = i18n.t("contact.h1");
-        document.getElementById("c-h2").textContent      = i18n.t("contact.h2");
-        document.getElementById("c-desc").textContent    = i18n.t("contact.desc");
-        document.getElementById("c-li-hint").textContent = i18n.t("contact.li_hint");
-        document.getElementById("c-em-hint").textContent = i18n.t("contact.email_hint");
-        document.getElementById("c-wa-hint").textContent = i18n.t("contact.wa_hint");
-
-        // Footer
-        document.getElementById("f-tagline").textContent = i18n.t("footer.tagline");
-
-        // Re-render projects (subtitle changes per lang)
-        renderProjects(data.clients);
+      function setLang(lang) {
+        i18n.set(lang);
+        applyLang();
       }
 
-      /* ── Boot ── */
-      // Clients are fetched from /api/media (Cloudinary via backend).
-      // Profile stays in localStorage (set via admin.html).
+      // _cachedClients: diisi boot() dari /api/media, fallback ke localStorage
       let _cachedClients = null;
 
-      async function boot() {
-        const local = store.get();
-        applyProfile(local.profile);
-
-        // Show skeleton while fetching
-        document.getElementById("projects").innerHTML =
-          `<div style="max-width:1200px;margin:4rem auto;padding:0 3rem;color:var(--muted);font-size:.85rem;letter-spacing:.08em">
-            Memuat karya…
-          </div>`;
-
-        try {
-          const res  = await fetch("/api/media");
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          const data = await res.json();
-          if (!data.ok) throw new Error(data.error || "API error");
-
-          _cachedClients = data.clients;
-        } catch (err) {
-          console.warn("[boot] API fetch failed, falling back to localStorage:", err);
-          // Graceful fallback: use whatever is in localStorage
-          _cachedClients = local.clients;
-        }
-
-        applyLang();
-        initObservers();
-        document.addEventListener("langchange", () => applyLang());
-      }
-
-      // applyLang calls renderProjects(data.clients) — patch it to use cached API data
-      const _origApplyLang = applyLang;
       function applyLang() {
         const lang = i18n.get();
         const local = store.get();
         const p = local.profile;
 
+        // html lang attr + buttons
         document.documentElement.lang = lang;
-        document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+        document
+          .querySelectorAll(".lang-btn")
+          .forEach((b) =>
+            b.classList.toggle("active", b.dataset.lang === lang),
+          );
 
-        document.getElementById("nav-work").textContent     = i18n.t("nav.work");
-        document.getElementById("nav-personal").textContent = i18n.t("nav.personal");
-        document.getElementById("nav-contact").textContent  = i18n.t("nav.contact");
-        document.getElementById("nav-hire").textContent     = i18n.t("nav.hire");
+        // Nav
+        document.getElementById("nav-work").textContent = i18n.t("nav.work");
+        document.getElementById("nav-personal").textContent =
+          i18n.t("nav.personal");
+        document.getElementById("nav-contact").textContent =
+          i18n.t("nav.contact");
+        document.getElementById("nav-hire").textContent = i18n.t("nav.hire");
 
-        document.getElementById("h-eyebrow").textContent = i18n.t("hero.eyebrow");
-        document.getElementById("h-scroll").textContent  = i18n.t("hero.scroll");
-        document.getElementById("h-badge").textContent   = i18n.t("hero.badge");
-        document.getElementById("h-bio").textContent     = lang === "en"
-          ? (p.bio_en || p.bio_id || p.bio || "")
-          : (p.bio_id || p.bio || "");
+        // Hero
+        document.getElementById("h-eyebrow").textContent =
+          i18n.t("hero.eyebrow");
+        document.getElementById("h-scroll").textContent = i18n.t("hero.scroll");
+        document.getElementById("h-badge").textContent = i18n.t("hero.badge");
+        document.getElementById("h-bio").textContent =
+          lang === "en"
+            ? p.bio_en || p.bio_id || p.bio || ""
+            : p.bio_id || p.bio || "";
 
-        document.getElementById("c-label").textContent   = i18n.t("contact.label");
-        document.getElementById("c-h1").textContent      = i18n.t("contact.h1");
-        document.getElementById("c-h2").textContent      = i18n.t("contact.h2");
-        document.getElementById("c-desc").textContent    = i18n.t("contact.desc");
-        document.getElementById("c-li-hint").textContent = i18n.t("contact.li_hint");
-        document.getElementById("c-em-hint").textContent = i18n.t("contact.email_hint");
-        document.getElementById("c-wa-hint").textContent = i18n.t("contact.wa_hint");
+        // Contact
+        document.getElementById("c-label").textContent =
+          i18n.t("contact.label");
+        document.getElementById("c-h1").textContent = i18n.t("contact.h1");
+        document.getElementById("c-h2").textContent = i18n.t("contact.h2");
+        document.getElementById("c-desc").textContent = i18n.t("contact.desc");
+        document.getElementById("c-li-hint").textContent =
+          i18n.t("contact.li_hint");
+        document.getElementById("c-em-hint").textContent =
+          i18n.t("contact.email_hint");
+        document.getElementById("c-wa-hint").textContent =
+          i18n.t("contact.wa_hint");
 
-        document.getElementById("f-tagline").textContent = i18n.t("footer.tagline");
+        // Footer
+        document.getElementById("f-tagline").textContent =
+          i18n.t("footer.tagline");
 
+        // Render projects — pakai data API jika sudah ada, fallback localStorage
         renderProjects(_cachedClients || local.clients);
+      }
+
+      /* ── Boot ── */
+      async function boot() {
+        const local = store.get();
+
+        // Tampilkan profile & teks dari localStorage dulu (instan, tidak menunggu API)
+        applyProfile(local.profile);
+        applyLang();
+        initObservers();
+        document.addEventListener("langchange", () => applyLang());
+
+        // Fetch media dari /api/media di background lalu re-render grid
+        try {
+          const res = await fetch("/api/media");
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          const data = await res.json();
+          if (!data.ok) throw new Error(data.error || "API error");
+          _cachedClients = data.clients;
+          renderProjects(_cachedClients);
+        } catch (err) {
+          console.warn(
+            "[boot] API fetch gagal, pakai localStorage:",
+            err.message,
+          );
+          // Sudah di-render dari localStorage di atas, tidak perlu apa-apa
+        }
       }
 
       function applyProfile(p) {
         if (!p) return;
-        if (p.name)    document.getElementById("h-name").innerHTML = p.name.replace(" ","<br>").replace("M","<em>M</em>");
+        if (p.name)
+          document.getElementById("h-name").innerHTML = p.name
+            .replace(" ", "<br>")
+            .replace("M", "<em>M</em>");
         if (p.tagline) document.title = `${p.name} — ${p.tagline}`;
         // Contact hrefs + values
         if (p.linkedin) {
           document.getElementById("ci-li").href = p.linkedin;
-          document.getElementById("c-li-val").textContent = p.linkedin.replace("https://","");
+          document.getElementById("c-li-val").textContent = p.linkedin.replace(
+            "https://",
+            "",
+          );
         }
         if (p.email) {
           document.getElementById("ci-em").href = "mailto:" + p.email;
           document.getElementById("c-email-val").textContent = p.email;
         }
         if (p.whatsapp) {
-          document.getElementById("ci-wa").href = "https://wa.me/" + p.whatsapp.replace(/\D/g,"");
+          document.getElementById("ci-wa").href =
+            "https://wa.me/" + p.whatsapp.replace(/\D/g, "");
           document.getElementById("c-wa-val").textContent = p.whatsapp;
         }
       }
 
       /* ── Projects renderer ── */
       function renderProjects(clients) {
-        // Reset video observer so re-renders don't leave stale observed elements
-        if (vidObs) { vidObs.disconnect(); vidObs = null; }
-        const lang     = i18n.get();
+        // Reset video observer agar re-render tidak tinggalkan elemen stale
+        if (vidObs) {
+          vidObs.disconnect();
+          vidObs = null;
+        }
+        const lang = i18n.get();
         const projWrap = document.getElementById("projects");
         const selfWrap = document.getElementById("self");
         projWrap.innerHTML = "";
         selfWrap.innerHTML = "";
 
-        const regular = clients.filter(c => c.id !== "self");
-        const self    = clients.find(c => c.id === "self");
+        const regular = clients.filter((c) => c.id !== "self");
+        const self = clients.find((c) => c.id === "self");
 
         regular.forEach((client, i) => {
-          const sub = lang === "en"
-            ? (client.sub_en || client.sub || "")
-            : (client.sub_id || client.sub || "");
+          const sub =
+            lang === "en"
+              ? client.sub_en || client.sub || ""
+              : client.sub_id || client.sub || "";
           const sec = document.createElement("div");
           sec.className = "proj-section";
           sec.innerHTML = `
@@ -337,7 +438,10 @@
             </div>
             <div class="media-layout" id="ml-${client.id}"></div>`;
           projWrap.appendChild(sec);
-          buildAdaptiveGrid(client.items, document.getElementById("ml-" + client.id));
+          buildAdaptiveGrid(
+            client.items,
+            document.getElementById("ml-" + client.id),
+          );
         });
 
         if (self) {
@@ -356,7 +460,8 @@
       }
 
       /* ── Adaptive grid ── */
-      const GAP = 12, MAX_PER_ROW = 3;
+      const GAP = 12,
+        MAX_PER_ROW = 3;
 
       function buildAdaptiveGrid(items, container) {
         if (!container) return;
@@ -371,37 +476,67 @@
           </div>`;
           return;
         }
-        const processed = items.map(it => ({ ...it, ar: (it.width || 9) / (it.height || 16) }));
-        const rows = []; let i = 0;
+        const processed = items.map((it) => ({
+          ...it,
+          ar: (it.width || 9) / (it.height || 16),
+        }));
+        const rows = [];
+        let i = 0;
         while (i < processed.length) {
-          let best = 1, bestScore = Infinity;
-          for (let n = 1; n <= Math.min(MAX_PER_ROW, processed.length - i); n++) {
-            const score = Math.abs(processed.slice(i, i + n).reduce((s, x) => s + x.ar, 0) - 2.2);
-            if (score < bestScore) { bestScore = score; best = n; }
+          let best = 1,
+            bestScore = Infinity;
+          for (
+            let n = 1;
+            n <= Math.min(MAX_PER_ROW, processed.length - i);
+            n++
+          ) {
+            const score = Math.abs(
+              processed.slice(i, i + n).reduce((s, x) => s + x.ar, 0) - 2.2,
+            );
+            if (score < bestScore) {
+              bestScore = score;
+              best = n;
+            }
           }
-          rows.push(processed.slice(i, i + best)); i += best;
+          rows.push(processed.slice(i, i + best));
+          i += best;
         }
         container.innerHTML = "";
-        rows.forEach(row => {
-          const rowEl = document.createElement("div"); rowEl.className = "media-row";
-          const totalAr = row.reduce((s, x) => s + x.ar, 0), gapTotal = (row.length - 1) * GAP;
-          row.forEach(item => rowEl.appendChild(buildCard(item, (item.ar / totalAr) * 100, gapTotal, row.length)));
+        rows.forEach((row) => {
+          const rowEl = document.createElement("div");
+          rowEl.className = "media-row";
+          const totalAr = row.reduce((s, x) => s + x.ar, 0),
+            gapTotal = (row.length - 1) * GAP;
+          row.forEach((item) =>
+            rowEl.appendChild(
+              buildCard(item, (item.ar / totalAr) * 100, gapTotal, row.length),
+            ),
+          );
           container.appendChild(rowEl);
         });
         observeVideos(container);
       }
 
       function buildCard(item, widthPct, gapTotal, rowLen) {
-        const isVideo = item.type === "video", ar = item.ar || 9/16;
+        const isVideo = item.type === "video",
+          ar = item.ar || 9 / 16;
         const gapShare = gapTotal / rowLen;
-        const card = document.createElement("div"); card.className = "mc";
-        card.dataset.publicId = item.publicId; card.dataset.isVideo = isVideo;
+        const card = document.createElement("div");
+        card.className = "mc";
+        card.dataset.publicId = item.publicId;
+        card.dataset.isVideo = isVideo;
         card.style.cssText = `flex-basis:calc(${widthPct.toFixed(3)}% - ${gapShare.toFixed(1)}px);aspect-ratio:${ar.toFixed(4)};min-height:180px;`;
-        const thumbW   = Math.round(600 * widthPct / 100);
-        const thumbUrl = cld.thumb(item.publicId, { w: Math.max(thumbW, 300), q: "auto" });
+        const thumbW = Math.round((600 * widthPct) / 100);
+        const thumbUrl = cld.thumb(item.publicId, {
+          w: Math.max(thumbW, 300),
+          q: "auto",
+        });
         let vidHtml = "";
         if (isVideo) {
-          const s = cld.video(item.publicId, { w: Math.max(thumbW, 600), q: "auto" });
+          const s = cld.video(item.publicId, {
+            w: Math.max(thumbW, 600),
+            q: "auto",
+          });
           vidHtml = `<video class="mc-vid" muted playsinline loop preload="none" data-src-webm="${s.webm}" data-src-mp4="${s.mp4}"></video>`;
         }
         card.innerHTML = `<div class="mc-media-wrap">
@@ -421,33 +556,45 @@
       let vidObs;
       function observeVideos(container) {
         if (!vidObs) {
-          vidObs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              const v = entry.target;
-              if (entry.isIntersecting) {
-                if (!v.querySelector("source")) {
-                  const srcWebm = v.dataset.srcWebm;
-                  const srcMp4  = v.dataset.srcMp4;
-                  if (srcWebm && srcMp4) {
-                    const s1 = document.createElement("source"); s1.src = srcWebm; s1.type = "video/webm";
-                    const s2 = document.createElement("source"); s2.src = srcMp4;  s2.type = "video/mp4";
-                    v.appendChild(s1); v.appendChild(s2); v.load();
+          vidObs = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                const v = entry.target;
+                if (entry.isIntersecting) {
+                  if (!v.querySelector("source")) {
+                    const srcWebm = v.dataset.srcWebm;
+                    const srcMp4 = v.dataset.srcMp4;
+                    if (srcWebm && srcMp4) {
+                      const s1 = document.createElement("source");
+                      s1.src = srcWebm;
+                      s1.type = "video/webm";
+                      const s2 = document.createElement("source");
+                      s2.src = srcMp4;
+                      s2.type = "video/mp4";
+                      v.appendChild(s1);
+                      v.appendChild(s2);
+                      v.load();
+                    }
                   }
+                  v.play()
+                    .then(() => v.classList.add("playing"))
+                    .catch(() => {});
+                } else {
+                  v.pause();
+                  v.classList.remove("playing");
                 }
-                v.play().then(() => v.classList.add("playing")).catch(() => {});
-              } else {
-                v.pause(); v.classList.remove("playing");
-              }
-            });
-          }, { threshold: 0.1 });
+              });
+            },
+            { threshold: 0.1 },
+          );
         }
-        container.querySelectorAll(".mc-vid").forEach(v => {
+        container.querySelectorAll(".mc-vid").forEach((v) => {
           if (!v.dataset.srcWebm || !v.dataset.srcMp4) {
             const card = v.closest(".mc");
             if (card && card.dataset.publicId) {
               const s = cld.video(card.dataset.publicId, { w: 700, q: "auto" });
               v.dataset.srcWebm = s.webm;
-              v.dataset.srcMp4  = s.mp4;
+              v.dataset.srcMp4 = s.mp4;
             }
           }
           vidObs.observe(v);
@@ -456,11 +603,22 @@
 
       /* ── Reveal observers ── */
       function initObservers() {
-        const obs = new IntersectionObserver(entries => {
-          entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add("v"), i * 80); });
-        }, { threshold: 0.08, rootMargin: "0px 0px -50px 0px" });
-        document.querySelectorAll(".rev,.cl-hdr,.ci,.self-hdr").forEach(el => obs.observe(el));
-        document.querySelectorAll(".ci").forEach((el, i) => { el.style.transitionDelay = i * .12 + "s"; obs.observe(el); });
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e, i) => {
+              if (e.isIntersecting)
+                setTimeout(() => e.target.classList.add("v"), i * 80);
+            });
+          },
+          { threshold: 0.08, rootMargin: "0px 0px -50px 0px" },
+        );
+        document
+          .querySelectorAll(".rev,.cl-hdr,.ci,.self-hdr")
+          .forEach((el) => obs.observe(el));
+        document.querySelectorAll(".ci").forEach((el, i) => {
+          el.style.transitionDelay = i * 0.12 + "s";
+          obs.observe(el);
+        });
       }
 
       boot();
