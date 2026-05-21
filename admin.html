@@ -642,6 +642,24 @@
             grid?.insertAdjacentHTML("afterbegin", mediaCardHTML(mi, clientId));
             renderSidebar();
             toast(`"${mi.title}" berhasil diupload!`, "success");
+
+            // ── Sync metadata ke Cloudinary via backend ──────────────────
+            const allItems = store.get().clients.find(c => c.id === clientId)?.items || [];
+            const order    = allItems.findIndex(m => m.publicId === mi.publicId);
+            fetch("/api/media", {
+              method:  "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                publicId:     mi.publicId,
+                resourceType: mi.type,
+                clientId,
+                title:        mi.title,
+                subtitle:     mi.subtitle || "",
+                order:        order >= 0 ? order : 9999,
+              }),
+            }).catch(err => console.warn("Metadata sync gagal (tidak fatal):", err));
+            // ─────────────────────────────────────────────────────────────
+
             setTimeout(() => { qi?.remove(); delete window._fm[qid]; }, 2000);
           } else {
             const err = JSON.parse(xhr.responseText || "{}");

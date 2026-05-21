@@ -221,12 +221,71 @@
       }
 
       /* ── Boot ── */
-      function boot() {
-        const data = store.get();
-        applyProfile(data.profile);
+      // Clients are fetched from /api/media (Cloudinary via backend).
+      // Profile stays in localStorage (set via admin.html).
+      let _cachedClients = null;
+
+      async function boot() {
+        const local = store.get();
+        applyProfile(local.profile);
+
+        // Show skeleton while fetching
+        document.getElementById("projects").innerHTML =
+          `<div style="max-width:1200px;margin:4rem auto;padding:0 3rem;color:var(--muted);font-size:.85rem;letter-spacing:.08em">
+            Memuat karya…
+          </div>`;
+
+        try {
+          const res  = await fetch("/api/media");
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          const data = await res.json();
+          if (!data.ok) throw new Error(data.error || "API error");
+
+          _cachedClients = data.clients;
+        } catch (err) {
+          console.warn("[boot] API fetch failed, falling back to localStorage:", err);
+          // Graceful fallback: use whatever is in localStorage
+          _cachedClients = local.clients;
+        }
+
         applyLang();
         initObservers();
         document.addEventListener("langchange", () => applyLang());
+      }
+
+      // applyLang calls renderProjects(data.clients) — patch it to use cached API data
+      const _origApplyLang = applyLang;
+      function applyLang() {
+        const lang = i18n.get();
+        const local = store.get();
+        const p = local.profile;
+
+        document.documentElement.lang = lang;
+        document.querySelectorAll(".lang-btn").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+
+        document.getElementById("nav-work").textContent     = i18n.t("nav.work");
+        document.getElementById("nav-personal").textContent = i18n.t("nav.personal");
+        document.getElementById("nav-contact").textContent  = i18n.t("nav.contact");
+        document.getElementById("nav-hire").textContent     = i18n.t("nav.hire");
+
+        document.getElementById("h-eyebrow").textContent = i18n.t("hero.eyebrow");
+        document.getElementById("h-scroll").textContent  = i18n.t("hero.scroll");
+        document.getElementById("h-badge").textContent   = i18n.t("hero.badge");
+        document.getElementById("h-bio").textContent     = lang === "en"
+          ? (p.bio_en || p.bio_id || p.bio || "")
+          : (p.bio_id || p.bio || "");
+
+        document.getElementById("c-label").textContent   = i18n.t("contact.label");
+        document.getElementById("c-h1").textContent      = i18n.t("contact.h1");
+        document.getElementById("c-h2").textContent      = i18n.t("contact.h2");
+        document.getElementById("c-desc").textContent    = i18n.t("contact.desc");
+        document.getElementById("c-li-hint").textContent = i18n.t("contact.li_hint");
+        document.getElementById("c-em-hint").textContent = i18n.t("contact.email_hint");
+        document.getElementById("c-wa-hint").textContent = i18n.t("contact.wa_hint");
+
+        document.getElementById("f-tagline").textContent = i18n.t("footer.tagline");
+
+        renderProjects(_cachedClients || local.clients);
       }
 
       function applyProfile(p) {
