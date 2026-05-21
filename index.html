@@ -69,10 +69,10 @@
           <div class="hero-badge" id="h-badge"></div>
         </div>
       </div>
-      <div class="scroll-hint">
+      <!-- <div class="scroll-hint">
         <div class="s-line"></div>
         <span id="h-scroll"></span>
-      </div>
+      </div> -->
     </section>
 
     <!-- MARQUEE -->
@@ -250,6 +250,8 @@
 
       /* ── Projects renderer ── */
       function renderProjects(clients) {
+        // Reset video observer so re-renders don't leave stale observed elements
+        if (vidObs) { vidObs.disconnect(); vidObs = null; }
         const lang     = i18n.get();
         const projWrap = document.getElementById("projects");
         const selfWrap = document.getElementById("self");
@@ -365,22 +367,29 @@
               const v = entry.target;
               if (entry.isIntersecting) {
                 if (!v.querySelector("source")) {
-                  const s1 = document.createElement("source"); s1.src = v.dataset.srcWebm; s1.type = "video/webm";
-                  const s2 = document.createElement("source"); s2.src = v.dataset.srcMp4;  s2.type = "video/mp4";
-                  v.appendChild(s1); v.appendChild(s2); v.load();
+                  const srcWebm = v.dataset.srcWebm;
+                  const srcMp4  = v.dataset.srcMp4;
+                  if (srcWebm && srcMp4) {
+                    const s1 = document.createElement("source"); s1.src = srcWebm; s1.type = "video/webm";
+                    const s2 = document.createElement("source"); s2.src = srcMp4;  s2.type = "video/mp4";
+                    v.appendChild(s1); v.appendChild(s2); v.load();
+                  }
                 }
                 v.play().then(() => v.classList.add("playing")).catch(() => {});
               } else {
                 v.pause(); v.classList.remove("playing");
               }
             });
-          }, { threshold: 0.45 });
+          }, { threshold: 0.1 });
         }
         container.querySelectorAll(".mc-vid").forEach(v => {
-          const card = v.closest(".mc");
-          if (card) {
-            const s = cld.video(card.dataset.publicId, { w: 700, q: "auto" });
-            v.dataset.srcWebm = s.webm; v.dataset.srcMp4 = s.mp4;
+          if (!v.dataset.srcWebm || !v.dataset.srcMp4) {
+            const card = v.closest(".mc");
+            if (card && card.dataset.publicId) {
+              const s = cld.video(card.dataset.publicId, { w: 700, q: "auto" });
+              v.dataset.srcWebm = s.webm;
+              v.dataset.srcMp4  = s.mp4;
+            }
           }
           vidObs.observe(v);
         });
