@@ -311,6 +311,16 @@
         };
         store.save(d);
         toast("Perubahan disimpan!", "success");
+
+        // Sync profile ke backend agar tampil di semua browser
+        fetch("/api/media?type=profile", {
+          method:  "POST",
+          headers: { "Content-Type": "application/json" },
+          body:    JSON.stringify(d.profile),
+        })
+          .then(r => r.json())
+          .then(r => { if (r.ok) toast("Profile tersinkron ke server ✓", "success"); })
+          .catch(err => console.warn("Profile sync gagal (tidak fatal):", err));
       }
 
       // ── Cloudinary ───────────────────────────────────────────────
@@ -643,7 +653,7 @@
             renderSidebar();
             toast(`"${mi.title}" berhasil diupload!`, "success");
 
-            // ── Sync metadata ke Cloudinary via backend ──────────────────
+            // Sync metadata ke Cloudinary via backend
             const allItems = store.get().clients.find(c => c.id === clientId)?.items || [];
             const order    = allItems.findIndex(m => m.publicId === mi.publicId);
             fetch("/api/media", {
@@ -658,7 +668,6 @@
                 order:        order >= 0 ? order : 9999,
               }),
             }).catch(err => console.warn("Metadata sync gagal (tidak fatal):", err));
-            // ─────────────────────────────────────────────────────────────
 
             setTimeout(() => { qi?.remove(); delete window._fm[qid]; }, 2000);
           } else {

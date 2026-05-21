@@ -2,10 +2,8 @@
   "name": "rsm-portfolio",
   "version": "1.0.0",
   "description": "Rizky Syahrul M — Portfolio",
-  "engines": {
-    "node": ">=18"
-  },
+  "engines": { "node": ">=18" },
   "dependencies": {
-    "cloudinary": "^2.5.1"
+    "cloudinary": "^1.41.3"
   }
 }
