@@ -614,3 +614,26 @@ body {
 .content::-webkit-scrollbar {
   width: 3px;
 }
+
+/* ── Additional styles for v3 features ── */
+.cfg-h {
+  font-size: .72rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+.config-section { margin-bottom: 1.5rem; }
+.config-grid    { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 660px; }
+.field          { margin-bottom: 1rem; }
+.field label    { display:block; font-size:.75rem; color:var(--muted); margin-bottom:.4rem; letter-spacing:.05em; }
+.field input, .field textarea {
+  width:100%; background:var(--card); border:1px solid var(--border);
+  color:var(--cream); font-family:var(--sans); font-size:.85rem;
+  padding:.55rem .8rem; border-radius:4px; transition:border .2s;
+}
+.field input:focus, .field textarea:focus { outline:none; border-color:var(--gold); }
+.field textarea { resize:vertical; min-height:80px; }
+.field-hint     { font-size:.7rem; color:var(--muted); margin-top:.3rem; }
