@@ -185,10 +185,10 @@
       let _apiClients = null;
       let _apiProfile = null;
 
-      // Helper: set textContent safely, skip if element doesn't exist
+      // Safe setter — skips silently if element doesn't exist (e.g. commented-out elements)
       function setText(id, val) {
         const el = document.getElementById(id);
-        if (el && val !== undefined && val !== null) el.textContent = val;
+        if (el && val != null) el.textContent = val;
       }
 
       function applyLang() {
@@ -201,21 +201,18 @@
           document.querySelectorAll(".lang-btn").forEach(b =>
             b.classList.toggle("active", b.dataset.lang === lang));
 
-          // Nav
           setText("nav-work",     i18n.t("nav.work"));
           setText("nav-personal", i18n.t("nav.personal"));
           setText("nav-contact",  i18n.t("nav.contact"));
           setText("nav-hire",     i18n.t("nav.hire"));
 
-          // Hero
           setText("h-eyebrow", i18n.t("hero.eyebrow"));
-          setText("h-scroll",  i18n.t("hero.scroll"));   // element may be commented out — setText handles null safely
+          setText("h-scroll",  i18n.t("hero.scroll"));  // may be absent in HTML — handled safely
           setText("h-badge",   i18n.t("hero.badge"));
           setText("h-bio",     lang === "en"
             ? (p.bio_en || p.bio_id || p.bio || "")
             : (p.bio_id || p.bio || ""));
 
-          // Contact
           setText("c-label",   i18n.t("contact.label"));
           setText("c-h1",      i18n.t("contact.h1"));
           setText("c-h2",      i18n.t("contact.h2"));
@@ -223,13 +220,9 @@
           setText("c-li-hint", i18n.t("contact.li_hint"));
           setText("c-em-hint", i18n.t("contact.email_hint"));
           setText("c-wa-hint", i18n.t("contact.wa_hint"));
-
-          // Footer
           setText("f-tagline", i18n.t("footer.tagline"));
 
-          // Re-render projects (subtitle changes per lang)
-          const clients = _apiClients || local.clients || [];
-          renderProjects(clients);
+          renderProjects(_apiClients || local.clients || []);
         } catch (err) {
           console.error("[applyLang] error:", err);
         }
@@ -237,42 +230,38 @@
 
       /* ── Boot ── */
       async function boot() {
+        const local = store.get();
+
+        // Render langsung dari localStorage dulu (instan, tidak ada blank)
+        applyProfile(local.profile);
+        applyLang();
+        initObservers();
+        document.addEventListener("langchange", () => applyLang());
+
+        // Fetch data dari API di background — tidak blok render awal
         try {
-          const local = store.get();
+          const ctrl    = new AbortController();
+          const timeout = setTimeout(() => ctrl.abort(), 8000);
+          const res     = await fetch("/api/media", { signal: ctrl.signal });
+          clearTimeout(timeout);
 
-          // 1. Render dari localStorage DULU — langsung tampil, tidak blank
-          applyProfile(local.profile || {});
-          applyLang();
-          initObservers();
-          document.addEventListener("langchange", () => applyLang());
-
-          // 2. Fetch data dari API di background — tidak blok render
-          try {
-            const controller = new AbortController();
-            const timeout     = setTimeout(() => controller.abort(), 8000); // 8s timeout
-            const res = await fetch("/api/media", { signal: controller.signal });
-            clearTimeout(timeout);
-
-            // Pastikan benar-benar dapat JSON (bukan HTML redirect/error page)
-            const ct = res.headers.get("content-type") || "";
-            if (!res.ok || !ct.includes("application/json")) {
-              throw new Error("API response not JSON (status " + res.status + ")");
-            }
-
-            const data = await res.json();
-            if (!data.ok) throw new Error(data.error || "API error");
-
-            _apiProfile = data.profile || null;
-            _apiClients = data.clients || null;
-
-            if (_apiProfile) applyProfile(_apiProfile);
-            applyLang(); // re-render dengan data API
-          } catch (apiErr) {
-            // API belum dikonfigurasi atau error — tidak apa-apa, localStorage sudah render
-            console.warn("[boot] API fallback ke localStorage:", apiErr.message);
+          // Guard: pastikan dapat JSON bukan HTML error page
+          const ct = res.headers.get("content-type") || "";
+          if (!res.ok || !ct.includes("application/json")) {
+            throw new Error("API returned non-JSON (status " + res.status + ")");
           }
+
+          const data = await res.json();
+          if (!data.ok) throw new Error(data.error || "API error");
+
+          _apiProfile = data.profile || null;
+          _apiClients = data.clients || null;
+
+          if (_apiProfile) applyProfile(_apiProfile);
+          applyLang(); // re-render dengan data fresh dari API
         } catch (err) {
-          console.error("[boot] fatal:", err);
+          // API tidak tersedia atau belum dikonfigurasi — localStorage sudah render, aman
+          console.warn("[boot] API fallback ke localStorage:", err.message);
         }
       }
 

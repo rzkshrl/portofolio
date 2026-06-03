@@ -5,28 +5,59 @@ const CLD_CONFIG = {
   uploadPreset: "portofolio",
 };
 
+// ── Helpers ───────────────────────────────────────────────────────
+// Encode a Cloudinary public_id for use in URLs.
+// Encodes each path segment individually so slashes are preserved,
+// but commas, spaces, and other special chars are safely escaped.
+function _encodePublicId(publicId) {
+  return String(publicId)
+    .split("/")
+    .map(seg => encodeURIComponent(seg))
+    .join("/");
+}
+
+// Strip ONLY real media file extensions from a public_id.
+// Cloudinary stores public_ids WITHOUT extensions, but if one slips through
+// (e.g. "folder/file.mp4") we remove it. We do NOT remove dots inside filenames
+// like "51qwifBxupL._AC_UF1000,1000_QL80_" — only known extension suffixes.
+function _stripMediaExt(id) {
+  return id.replace(/\.(jpg|jpeg|png|gif|webp|avif|mp4|mov|webm|avi|heic|heif)$/i, "");
+}
+
 // ── URL Builder ───────────────────────────────────────────────────
 const cld = {
   base: () => `https://res.cloudinary.com/${CLD_CONFIG.cloudName}`,
+
   thumb(publicId, { w = 800, h, q = "auto", f = "auto" } = {}) {
-    const t = [`w_${w}`, `q_${q}`, `f_${f}`, "c_fill"];
-    if (h) t.push(`h_${h}`);
-    const type = publicId.match(/\.(mp4|mov|webm|avi)$/i) ? "video" : "image";
-    const id   = publicId.replace(/\.[^.]+$/, "");
-    if (type === "video") t.push("so_0");
-    return `${this.base()}/${type}/upload/${t.join(",")}/${id}.jpg`;
+    const transforms = [`w_${w}`, `q_${q}`, `f_${f}`, "c_fill"];
+    if (h) transforms.push(`h_${h}`);
+
+    // Detect resource type from original publicId before cleaning
+    const isVideo = /\.(mp4|mov|webm|avi)$/i.test(publicId);
+    const type    = isVideo ? "video" : "image";
+    if (isVideo) transforms.push("so_0"); // snapshot at 0s for videos
+
+    const cleanId   = _stripMediaExt(publicId);
+    const encodedId = _encodePublicId(cleanId);
+
+    return `${this.base()}/${type}/upload/${transforms.join(",")}/${encodedId}.jpg`;
   },
+
   video(publicId, { w = 900, q = "auto" } = {}) {
-    const id = publicId.replace(/\.[^.]+$/, "");
+    const cleanId   = _stripMediaExt(publicId);
+    const encodedId = _encodePublicId(cleanId);
     return {
-      webm: `${this.base()}/video/upload/w_${w},q_${q},f_webm,vc_vp9/${id}.webm`,
-      mp4:  `${this.base()}/video/upload/w_${w},q_${q},f_mp4,vc_h264/${id}.mp4`,
+      webm: `${this.base()}/video/upload/w_${w},q_${q},f_webm,vc_vp9/${encodedId}.webm`,
+      mp4:  `${this.base()}/video/upload/w_${w},q_${q},f_mp4,vc_h264/${encodedId}.mp4`,
     };
   },
+
   image(publicId, { w = 900, q = "auto", f = "auto" } = {}) {
-    const id = publicId.replace(/\.[^.]+$/, "");
-    return `${this.base()}/image/upload/w_${w},q_${q},f_${f},c_fill/${id}`;
+    const cleanId   = _stripMediaExt(publicId);
+    const encodedId = _encodePublicId(cleanId);
+    return `${this.base()}/image/upload/w_${w},q_${q},f_${f},c_fill/${encodedId}`;
   },
+
   uploadUrl()   { return `https://api.cloudinary.com/v1_1/${CLD_CONFIG.cloudName}/auto/upload`; },
   uploadPreset: () => CLD_CONFIG.uploadPreset,
   cloudName:    () => CLD_CONFIG.cloudName,
@@ -98,12 +129,10 @@ const store = {
   removeClient(cid) {
     const d = this.get(); d.clients = d.clients.filter(c => c.id !== cid); this.save(d); return d;
   },
-  // Reorder media within a client
   reorder(cid, from, to) {
     const d = this.get(), c = d.clients.find(x => x.id === cid);
     if (c) { const [m] = c.items.splice(from, 1); c.items.splice(to, 0, m); this.save(d); } return d;
   },
-  // ★ Reorder the clients list
   reorderClients(from, to) {
     const d = this.get();
     const [moved] = d.clients.splice(from, 1);
